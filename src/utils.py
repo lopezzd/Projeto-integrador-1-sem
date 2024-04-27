@@ -32,7 +32,7 @@ def preco_venda():
     print(f"D - Custo Fixo é {(preco_de_venda)*(custo_administrativo/100)}")
     print(f"E - Comissa de Vendas é {(preco_de_venda)*(comissao_de_vendas/100)}")
     print(f"F - Impostos é {(preco_de_venda)*(imposto/100)}")
-    print(f"G- Outros Custos é {(preco_de_venda)*(imposto/100)}")
+    print(f"G - Outros Custos é {((preco_de_venda)*(imposto/100))+((preco_de_venda)*(comissao_de_vendas/100))+((preco_de_venda)*(custo_administrativo/100))}")
     print(f"H - Rentabilidade é {(preco_de_venda)*(margem_de_lucro/100)}")
     
     lucro_percentual = ((preco_de_venda - custo_do_produto) / preco_de_venda) * 100
