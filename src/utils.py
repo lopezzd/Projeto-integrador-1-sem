@@ -1,3 +1,14 @@
+def cadastrar_usuario():
+    try:
+        nome_usuario = input("Informe  seu nome: ")
+        tipo_usuario = int(input("Informe o tipo de usuário \n 1 - Administrador\n 2 - Consultador\n Insira: "))
+        senha_usuario = input("Crie uma senha: ")
+        confirmar_senha = input("Confirme sua senha: ")
+        print("\n")        
+        
+    except ValueError:
+        print("Informe o valor correto!!!")
+        
 def preco_venda():
     try:
         nome_produto = input("Informe o nome do produto: ")
@@ -29,7 +40,7 @@ def preco_venda():
         print("Lucro alto")
     elif lucro_percentual <= 20 and lucro_percentual >= 10:
         print("Lucro médio")
-    elif lucro_percentual < 10 and lucro_percentual >= 1:
+    elif lucro_percentual <= 9 and lucro_percentual >= 1:
         print("Lucro baixo")
     elif lucro_percentual == 0:
         print("Sem lucro")
@@ -38,13 +49,3 @@ def preco_venda():
     print("_"*50)
     print("\n")
     
-def cadastrar_usuario():
-    try:
-        nome_usuario = input("Informe  seu nome: ")
-        tipo_usuario = int(input("Informe o tipo de usuário \n 1 - Administrador\n 2 - Consultador\n Insira: "))
-        senha_usuario = input("Crie uma senha: ")
-        confirmar_senha = input("Confirme sua senha: ")
-        print("\n")        
-        
-    except ValueError:
-        print("Informe o valor correto!!!")
