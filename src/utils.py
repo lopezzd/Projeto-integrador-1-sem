@@ -1,0 +1,38 @@
+def preco_venda():
+    try:
+        nome_produto = input("Informe o nome do produto: ")
+        custo_do_produto = float(input("Informe o custo do produto em reais: "))
+        custo_administrativo = float(input("Informe o custo administrativo o produto em porcentagem: "))
+        comissao_de_vendas = float(input("Informe a comissão de venda do produto em porcentagem: "))
+        imposto = float(input("Informe os impostos em porcentagem: "))
+        margem_de_lucro = float(input("Informe a margem de lucro desejada em porcentagem: "))
+        print("_"*50)
+    except ValueError:
+        print("Informe o valor correto!!!")
+    preco_de_venda = custo_do_produto / ( 1 - (((custo_administrativo/100) + (comissao_de_vendas/100) + (imposto/100) + (margem_de_lucro/100)/ 1 )))
+    
+    print("\n")
+    print("_"*50)
+    print(f"Tabela de calculos de {nome_produto}")
+    print("_"*50)    
+    print(f"A - Preço de venda {preco_de_venda} ")
+    print(f"B - Custo de Aquisição {(preco_de_venda) * 0.48}")
+    print(f"C - Receita Bruta {(preco_de_venda) * 0.52}")
+    print(f"D - Custo Fixo {(preco_de_venda)*(custo_administrativo/100)}")
+    print(f"E - Comissa de Vendas {(preco_de_venda)*(comissao_de_vendas/100)}")
+    print(f"F - Impostos {(preco_de_venda)*(imposto/100)}")
+    print(f"G- Outros Custos {(preco_de_venda)*(imposto/100)}")
+    print(f"H - Rentabilidade {(preco_de_venda)*(margem_de_lucro/100)}")
+    print("_"*50)
+    print("\n")
+    
+def cadastrar_usuario():
+    try:
+        nome_usuario = input("Informe  seu nome: ")
+        tipo_usuario = int(input("Informe o tipo de usuário \n 1 - Administrador\n 2 - Consultador\n Insira: "))
+        senha_usuario = input("Crie uma senha: ")
+        confirmar_senha = input("Confirme sua senha: ")
+        print("\n")        
+        
+    except ValueError:
+        print("Informe o valor correto!!!")
