@@ -15,14 +15,26 @@ def preco_venda():
     print("_"*50)
     print(f"Tabela de calculos de {nome_produto}")
     print("_"*50)    
-    print(f"A - Preço de venda {preco_de_venda} ")
-    print(f"B - Custo de Aquisição {(preco_de_venda) * 0.48}")
-    print(f"C - Receita Bruta {(preco_de_venda) * 0.52}")
-    print(f"D - Custo Fixo {(preco_de_venda)*(custo_administrativo/100)}")
-    print(f"E - Comissa de Vendas {(preco_de_venda)*(comissao_de_vendas/100)}")
-    print(f"F - Impostos {(preco_de_venda)*(imposto/100)}")
-    print(f"G- Outros Custos {(preco_de_venda)*(imposto/100)}")
-    print(f"H - Rentabilidade {(preco_de_venda)*(margem_de_lucro/100)}")
+    print(f"A - Preço de venda é {preco_de_venda} ")
+    print(f"B - Custo de Aquisição é {custo_do_produto}")
+    print(f"C - Receita Bruta é {preco_de_venda - custo_do_produto}")
+    print(f"D - Custo Fixo é {(preco_de_venda)*(custo_administrativo/100)}")
+    print(f"E - Comissa de Vendas é {(preco_de_venda)*(comissao_de_vendas/100)}")
+    print(f"F - Impostos é {(preco_de_venda)*(imposto/100)}")
+    print(f"G- Outros Custos é {(preco_de_venda)*(imposto/100)}")
+    print(f"H - Rentabilidade é {(preco_de_venda)*(margem_de_lucro/100)}")
+    
+    lucro_percentual = ((preco_de_venda - custo_do_produto) / preco_de_venda) * 100
+    if lucro_percentual > 20:
+        print("Lucro alto")
+    elif lucro_percentual <= 20 and lucro_percentual >= 10:
+        print("Lucro médio")
+    elif lucro_percentual < 10 and lucro_percentual >= 1:
+        print("Lucro baixo")
+    elif lucro_percentual == 0:
+        print("Sem lucro")
+    else:
+        print("Prejuízo")
     print("_"*50)
     print("\n")
     
