@@ -1,3 +1,14 @@
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host = "BD-ACD",
+  user = "BD080324152",
+  password = "Dnztb9",
+  database = ""
+)
+
+mycursor = myd.cursor()
+
 def cadastrar_usuario():
     try:
         nome_usuario = input("Informe  seu nome: ")
@@ -48,4 +59,17 @@ def preco_venda():
         print("Prejuízo")
     print("_"*50)
     print("\n")
+    
+    sql = "INSERT INTO table (campo1 , campo2...) VALUES (%s, %s)"
+    valores = ("valor1","valor2")
+    mycursor.execute(sql, valores)
+    mydb.commit()
+    
+    
+    
+    
+    
+    
+    
+    
     
