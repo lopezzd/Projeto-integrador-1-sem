@@ -2,12 +2,12 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
   host = "BD-ACD",
-  user = "BD080324152",
-  password = "Dnztb9",
-  database = ""
+  user = "BD080324124",
+  password = "Uomrw3",
+  database = "puc"
 )
 
-mycursor = myd.cursor()
+mycursor = mydb.cursor()
 
 def cadastrar_usuario():
     try:
@@ -28,6 +28,7 @@ def preco_venda():
         comissao_de_vendas = float(input("Informe a comissão de venda do produto em porcentagem: "))
         imposto = float(input("Informe os impostos em porcentagem: "))
         margem_de_lucro = float(input("Informe a margem de lucro desejada em porcentagem: "))
+        desc = float(input("Informe a descrição: "))
         print("_"*50)
     except ValueError:
         print("Informe o valor correto!!!")
@@ -47,6 +48,7 @@ def preco_venda():
     print(f"H - Rentabilidade é {(preco_de_venda)*(margem_de_lucro/100)}")
     
     lucro_percentual = ((preco_de_venda - custo_do_produto) / preco_de_venda) * 100
+    
     if lucro_percentual > 20:
         print("Lucro alto")
     elif lucro_percentual <= 20 and lucro_percentual >= 10:
@@ -60,11 +62,10 @@ def preco_venda():
     print("_"*50)
     print("\n")
     
-    sql = "INSERT INTO table (campo1 , campo2...) VALUES (%s, %s)"
-    valores = ("valor1","valor2")
+    sql = "INSERT INTO STOCKPRIME ( Nome_produto, Descricao_produto, Custo_produto, Custo_fixo, Comissa_vendas, Impostos, Rentabilidade) VALUES ( %s,%s, %s,%s, %s,%s, %s)"
+    valores = (nome_produto, desc, custo_do_produto, custo_administrativo, comissao_de_vendas, imposto, margem_de_lucro)
     mycursor.execute(sql, valores)
     mydb.commit()
-    
     
     
     
