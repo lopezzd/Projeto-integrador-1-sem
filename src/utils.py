@@ -20,7 +20,7 @@ def cadastrar_usuario():
     except ValueError:
         print("Informe o valor correto!!!")
         
-def preco_venda():
+def cadastrar_produto():
     while True:
         try:
             nome_produto = input("Informe o nome do produto: ")
@@ -51,15 +51,15 @@ def preco_venda():
     lucro_percentual = ((preco_de_venda - custo_do_produto) / preco_de_venda) * 100
     
     if lucro_percentual > 20:
-        print("Lucro alto")
+        print("Lucro alto \n")
     elif lucro_percentual <= 20 and lucro_percentual >= 10:
-        print("Lucro médio")
+        print("Lucro médio \n")
     elif lucro_percentual <= 9 and lucro_percentual >= 1:
-        print("Lucro baixo")
+        print("Lucro baixo \n")
     elif lucro_percentual == 0:
         print("Sem lucro")
     else:
-        print("Prejuízo")
+        print("Prejuízo \n")
     print("_"*50)
     print("\n")
     
@@ -67,12 +67,15 @@ def preco_venda():
     valores = (nome_produto, desc, custo_do_produto, custo_administrativo, comissao_de_vendas, imposto, margem_de_lucro)
     mycursor.execute(sql, valores)
     mydb.commit()
-    print(f"Adicionado com sucesso!")
+    print(f"Adicionado com sucesso! \n")
     
-    
-    
-    
-    
-    
-    
+    def procurar_produto():
+        produto = input("Digite o produto a ser procurado")
+        sql = "SELECT * FROM STOCKPRIME WHERE Nome_produto LIKE '%{produto}%'"
+        mycursor.execute(sql)
+        myresults = mycursor.fetchall()
+        
+        for myresult in resultado:
+            print(myresult)
+        
     

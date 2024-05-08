@@ -13,7 +13,7 @@ while True:
         if Escolha == 1:
             cadastrar_usuario()
         elif Escolha == 2:
-            preco_venda()
+            cadastrar_produto()
         elif Escolha == 3:
             print("Obrigado por usar!!!")
             break
