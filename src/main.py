@@ -6,7 +6,8 @@ while True:
     print("Menu")
     print("1 - Cadastro de usuário")
     print("2 - Cadastrar produto")
-    print("3 - Encerrar")
+    print("3 - Procurar produto")
+    print("4 - Encerrar")
     print("_"*50)
     try:
         Escolha = int(input("Escolha: "))
@@ -15,6 +16,8 @@ while True:
         elif Escolha == 2:
             cadastrar_produto()
         elif Escolha == 3:
+            procurar_produto()
+        elif Escolha == 4:
             print("Obrigado por usar!!!")
             break
     except ValueError:
