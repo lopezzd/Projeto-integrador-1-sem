@@ -74,19 +74,37 @@ def cadastrar_produto():
         valores = (nome_produto, desc, custo_do_produto, custo_administrativo, comissao_de_vendas, imposto, margem_de_lucro)
         mycursor.execute(sql, valores)
         mydb.commit()
+        
+        sql = "INSERT INTO STOCKPRIME ( Nome_produto, Descricao_produto, Custo_produto, Custo_fixo, Comissa_vendas, Impostos, Rentabilidade) VALUES ( %s,%s, %s,%s, %s,%s, %s)"
+        valores = (nome_produto, desc, custo_do_produto, custo_administrativo, comissao_de_vendas, imposto, margem_de_lucro)
+        mycursor.execute(sql, valores)
+        mydb.commit()
         print(f"Adicionado com sucesso! \n")
         
 def procurar_produto():
-    produto = input("Digite o produto a ser procurado")
-    sql = "SELECT * FROM STOCKPRIME WHERE Nome_produto LIKE '%{produto}%'"
+    produto = input("Digite o produto a ser procurado: ")
+    sql = f"SELECT * FROM STOCKPRIME WHERE Nome_produto LIKE '%{produto}%'"
     mycursor.execute(sql)
     myresults = mycursor.fetchall()
+    
+    sql = f"SELECT * FROM STOCKPRIME_porcentagem WHERE Nome_produto LIKE '%{produto}%'"
+    mycursor.execute(sql)
+    porc = mycursor.fetchall()
         
     if(myresults):
-        for myresult in myresults:
-            print(myresult)
+        for i in myresults:
+            print(f"Código do Produto: {i[0]}")
+            print(f"Nome do Produto: {i[1]}")
+            print(f"Preço de Venda: R${i[10]}")
+            print(f"Custo: {i[3]}")
+            print(f"Custo Fixo: {i[4]}%")
+            print(f"Comissão de Venda: {i[5]}%")
+            print(f"Imposto: {i[6]}%")
+            print(f"Rentabilidade: {i[7]}%")
+            print(f"{i[9]}")
+            print(f"Desrição: {i[2]}")
+            print()
+ 
         print(f"Foram todos os resultados encontrados")
     else:
-        print(f"Não foram encontrados nenhum item!")        
-            
-        
+        print(f"Não foram encontrados nenhum item!")
