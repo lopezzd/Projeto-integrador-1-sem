@@ -38,7 +38,7 @@ def cadastrar_produto():
         custo_fixo_porc = ((preco_de_venda)*(custo_administrativo/100))
         comissão_de_vendas_porc = ((preco_de_venda)*(comissao_de_vendas/100))
         impostos_porc = ((preco_de_venda)*(imposto/100))
-        outros_custos_porc = (((preco_de_venda)*(imposto/100))+((preco_de_venda)*(comissao_de_vendas/100))+((preco_de_venda)*(custo_administrativo/100)))
+        outros_custos_porc = (((preco_de_venda)(imposto/100))+((preco_de_venda)(comissao_de_vendas/100))+((preco_de_venda)*(custo_administrativo/100)))
         rentabilidade_porc = ((preco_de_venda)*(margem_de_lucro/100))
         
         print("\n")
@@ -75,8 +75,8 @@ def cadastrar_produto():
         mycursor.execute(sql, valores)
         mydb.commit()
         
-        sql = "INSERT INTO STOCKPRIME ( Nome_produto, Descricao_produto, Custo_produto, Custo_fixo, Comissa_vendas, Impostos, Rentabilidade) VALUES ( %s,%s, %s,%s, %s,%s, %s)"
-        valores = (nome_produto, desc, custo_do_produto, custo_administrativo, comissao_de_vendas, imposto, margem_de_lucro)
+        sql = "INSERT INTO STOCKPRIME_porcentagem ( Custo_produto_porc, Custo_fixo_porc, Comissa_vendas_porc, Impostos_porc, Rentabilidade_porc, Outros_custos_porc ) VALUES ( %s,%s, %s,%s, %s,%s)"
+        valores = (100, custo_fixo_porc, comissão_de_vendas_porc, impostos_porc,rentabilidade_porc ,outros_custos_porc)
         mycursor.execute(sql, valores)
         mydb.commit()
         print(f"Adicionado com sucesso! \n")
@@ -86,25 +86,26 @@ def procurar_produto():
     sql = f"SELECT * FROM STOCKPRIME WHERE Nome_produto LIKE '%{produto}%'"
     mycursor.execute(sql)
     myresults = mycursor.fetchall()
-    
-    sql = f"SELECT * FROM STOCKPRIME_porcentagem WHERE Nome_produto LIKE '%{produto}%'"
+
+    sql = f"SELECT * FROM STOCKPRIME_porcentagens WHERE cod_produto = (SELECT id FROM STOCKPRIME WHERE nome_produto = '%{i[1]}%')"
     mycursor.execute(sql)
     porc = mycursor.fetchall()
         
     if(myresults):
         for i in myresults:
-            print(f"Código do Produto: {i[0]}")
-            print(f"Nome do Produto: {i[1]}")
-            print(f"Preço de Venda: R${i[10]}")
-            print(f"Custo: {i[3]}")
-            print(f"Custo Fixo: {i[4]}%")
-            print(f"Comissão de Venda: {i[5]}%")
-            print(f"Imposto: {i[6]}%")
-            print(f"Rentabilidade: {i[7]}%")
-            print(f"{i[9]}")
-            print(f"Desrição: {i[2]}")
-            print()
- 
+            for j in porc:
+                print(f"Código do Produto..:{i[0]}")
+                print(f"Nome do Produto....:{i[1]}")
+                print(f"Preço de Venda.....:R${i[10]}- 100%")
+                print(f"Custo..............:R${i[3]} - {j[1]}%")
+                print(f"Custo Fixo.........:R${i[4]} - {j[2]}%")
+                print(f"Comissão de Venda..:R${i[5]} - {j[3]}%")
+                print(f"Imposto............:R${i[6]} - {j[4]}%")
+                print(f"Rentabilidade......:R${i[7]} - {j[5]}%")
+                print(f"Outros gastos......:R${i[9]} - {j[6]}%")
+                print(f"Desrição: {i[2]}")
+                print()
+
         print(f"Foram todos os resultados encontrados")
     else:
         print(f"Não foram encontrados nenhum item!")
