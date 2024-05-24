@@ -35,6 +35,12 @@ def cadastrar_produto():
             print("Informe o valor correto!!!")
         preco_de_venda = custo_do_produto / ( 1 - (((custo_administrativo/100) + (comissao_de_vendas/100) + (imposto/100) + (margem_de_lucro/100)/ 1 )))
     
+        custo_fixo_porc = ((preco_de_venda)*(custo_administrativo/100))
+        comissão_de_vendas_porc = ((preco_de_venda)*(comissao_de_vendas/100))
+        impostos_porc = ((preco_de_venda)*(imposto/100))
+        outros_custos_porc = (((preco_de_venda)*(imposto/100))+((preco_de_venda)*(comissao_de_vendas/100))+((preco_de_venda)*(custo_administrativo/100)))
+        rentabilidade_porc = ((preco_de_venda)*(margem_de_lucro/100))
+        
         print("\n")
         print("_"*50)
         print(f"Tabela de calculos de {nome_produto}")
@@ -42,11 +48,12 @@ def cadastrar_produto():
         print(f"A - Preço de venda é R${preco_de_venda} ")
         print(f"B - Custo de Aquisição é R${custo_do_produto}")
         print(f"C - Receita Bruta é R${preco_de_venda - custo_do_produto}")
-        print(f"D - Custo Fixo é {(preco_de_venda)*(custo_administrativo/100)}%")
-        print(f"E - Comissão de Vendas é {(preco_de_venda)*(comissao_de_vendas/100)}%")
-        print(f"F - Impostos é {(preco_de_venda)*(imposto/100)}%")
-        print(f"G - Outros Custos é {((preco_de_venda)*(imposto/100))+((preco_de_venda)*(comissao_de_vendas/100))+((preco_de_venda)*(custo_administrativo/100))}%")
-        print(f"H - Rentabilidade é {(preco_de_venda)*(margem_de_lucro/100)}")
+        print(f"D - Custo Fixo é {custo_fixo_porc}%")
+        print(f"E - Comissão de Vendas é {comissão_de_vendas_porc}%")
+        print(f"F - Impostos é {impostos_porc}%")
+        print(f"G - Outros Custos é {outros_custos_porc}%")
+        print(f"H - Rentabilidade é {rentabilidade_porc}")
+        
         
         lucro_percentual = ((preco_de_venda - custo_do_produto) / preco_de_venda) * 100
         
