@@ -19,7 +19,7 @@ while True:
     try:
         Escolha = int(input("Escolha: "))
         if Escolha   == 1:
-            print("Não por agora!")
+            print("Não implementado")
         elif Escolha == 2:
             cadastrar_produto()
         elif Escolha == 3:

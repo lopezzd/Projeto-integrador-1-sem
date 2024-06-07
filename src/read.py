@@ -63,3 +63,35 @@ def listar_produtos():
     else:
         print(f"Não há itens cadastrados!\n")
     mydb.close()
+    
+def procurar_produto_sort(n):
+    import mysql.connector
+
+    mydb = mysql.connector.connect(
+        host = "127.0.0.1",
+        user = "root",
+        password = "Lop&s546",
+        database = ""
+    )
+
+    mycursor = mydb.cursor()
+    
+    sql = f"SELECT * FROM escola.stockprime WHERE nome_produto LIKE '%{n}%'"
+    
+    mycursor.execute(sql)
+    myresults = mycursor.fetchall()
+        
+    if(myresults):
+        for i in myresults:
+            print()
+            print(f"Nome do Produto....:{i[1]}")
+            print(f"Desrição: {i[2]}")
+            print(f"Custo..............:R${i[3]} ")
+            print(f"Custo Fixo.........:R${i[4]}")
+            print(f"Comissão de Venda..:R${i[5]}")
+            print(f"Imposto............:R${i[6]}")
+            print(f"Rentabilidade......:R${i[7]}\n")
+            print()
+    else:
+        print(f"Não foram encontrados nenhum item!")
+    mydb.close()

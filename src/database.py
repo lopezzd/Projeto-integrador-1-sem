@@ -15,7 +15,7 @@ CREATE DATABASE escola;
 
 USE escola;
 
-CREATE TABLE STOCKPRIME (
+CREATE TABLE stockprime (
 id                INT AUTO_INCREMENT,
 nome_produto      VARCHAR(50) NOT NULL, 
 descricao_produto VARCHAR(255) NOT NULL,
