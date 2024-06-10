@@ -18,6 +18,7 @@ def cadastrar_produto():
             cv                = float(input("Informe a comissão de venda do produto em porcentagem: "))
             iv                = float(input("Informe os impostos em porcentagem: "))
             ml                = float(input("Informe a margem de lucro desejada em porcentagem: "))
+            quantidade        = int(input("Informe a quantidade: "))
             descricao_produto = input("Informe a descrição: ")
             print("_"*50)
         except ValueError:
@@ -39,11 +40,10 @@ def cadastrar_produto():
             print("Prejuízo \n")
         
         try:        
-            sql = "INSERT INTO escola.stockprime ( nome_produto, descricao_produto, cp_valor, cf, cv, iv, ml, lucro)  VALUES ( %s,%s, %s,%s, %s,%s, %s, %s)"
-            valores = (nome_produto, descricao_produto, cp_valor, cf, cv, iv, ml, lucro)
+            sql = "INSERT INTO escola.stockprime ( nome_produto, descricao_produto, cp_valor, cf, cv, iv, ml, lucro, quantidade)  VALUES ( %s,%s, %s,%s, %s,%s, %s, %s, %s)"
+            valores = (nome_produto, descricao_produto, cp_valor, cf, cv, iv, ml, lucro, quantidade)
             mycursor.execute(sql, valores)
             mydb.commit()
-            
             print(f"Adicionado com sucesso! \n")
         except Exception as e:
             print("Ocorreu um erro ao excluir o produto: ", e)

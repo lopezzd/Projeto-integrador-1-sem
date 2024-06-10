@@ -1,35 +1,35 @@
-from create import *
-from update import *
-from read   import *
-from delete import *
+from create    import *
+from update    import *
+from read      import *
+from delete    import *
+from simulação import *
 
-                    
 while True:
     print("STOCKPRIME")
     print("_"*50)
     print("Menu")
-    print("1 - Cadastro de usuário")
-    print("2 - Cadastrar produto")
-    print("3 - Listar produtos")
-    print("4 - Procurar produto")
-    print("5 - Atualizar produto")
-    print("6 - Deletar produto")
+    print("1 - Cadastrar produto")
+    print("2 - Listar produtos")
+    print("3 - Procurar produto")
+    print("4 - Atualizar produto")
+    print("5 - Deletar produto")
+    print("6 - Simular compra")
     print("7 - Encerrar")
     print("_"*50)
     try:
         Escolha = int(input("Escolha: "))
         if Escolha   == 1:
-            print("Não implementado")
-        elif Escolha == 2:
             cadastrar_produto()
-        elif Escolha == 3:
+        elif Escolha == 2:
             listar_produtos()
-        elif Escolha == 4:
+        elif Escolha == 3:
             procurar_produto()
-        elif Escolha == 5:
+        elif Escolha == 4:
             atualizar_produto()            
-        elif Escolha == 6:
+        elif Escolha == 5:
             excluir_produto()
+        elif Escolha == 6:
+            print("Não implementado")
         elif Escolha == 7:
             print("Obrigado por usar!!!")
             break

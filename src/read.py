@@ -20,18 +20,19 @@ def procurar_produto():
     if(myresults):
         for i in myresults:
             print()
-            print(f"Código do Produto..:{i[0]}")
-            print(f"Nome do Produto....:{i[1]}")
-            print(f"Desrição: {i[2]}")
-            print(f"Preço de Venda.....:R${i[8]}  - {i[16]}%")
-            print(f"Custo..............:R${i[3]}  - {i[17]}%")
-            print(f"Receita Bruta......:R${i[9]}  - {i[18]}%")
-            print(f"Custo Fixo.........:R${i[10]} - {i[19]}%")
-            print(f"Comissão de Venda..:R${i[11]} - {i[20]}%")
-            print(f"Imposto............:R${i[12]} - {i[21]}%")
-            print(f"Outros gastos......:R${i[13]} - {i[22]}%")
-            print(f"Rentabilidade......:R${i[14]} - {i[23]}%")
-            print(f"A margem de lucro é: {i[15]}")
+            print(f"Código do Produto.....: {i[0]}")
+            print(f"Nome do Produto.......: {i[1]}")
+            print(f"Desrição..............: {i[2]}")
+            print(f"Preço de Venda........: R${i[8]}  - {i[16]}%")
+            print(f"Custo.................: R${i[3]}  - {i[17]}%")
+            print(f"Receita Bruta.........: R${i[9]}  - {i[18]}%")
+            print(f"Custo Fixo............: R${i[10]} - {i[19]}%")
+            print(f"Comissão de Venda.....: R${i[11]} - {i[20]}%")
+            print(f"Imposto...............: R${i[12]} - {i[21]}%")
+            print(f"Outros gastos.........: R${i[13]} - {i[22]}%")
+            print(f"Rentabilidade.........: R${i[14]} - {i[23]}%")
+            print(f"A margem de lucro é...: {i[15]}")
+            print(f"Quantidade em estoque.: {i[-1]} un")
             print()
 
         print(f"Foram todos os resultados encontrados")
@@ -76,7 +77,7 @@ def procurar_produto_sort(n):
 
     mycursor = mydb.cursor()
     
-    sql = f"SELECT * FROM escola.stockprime WHERE nome_produto LIKE '%{n}%'"
+    sql = f"SELECT * FROM escola.stockprime WHERE id = '{n}'"
     
     mycursor.execute(sql)
     myresults = mycursor.fetchall()
@@ -84,14 +85,17 @@ def procurar_produto_sort(n):
     if(myresults):
         for i in myresults:
             print()
-            print(f"Nome do Produto....:{i[1]}")
-            print(f"Desrição: {i[2]}")
-            print(f"Custo..............:R${i[3]} ")
-            print(f"Custo Fixo.........:R${i[4]}")
-            print(f"Comissão de Venda..:R${i[5]}")
-            print(f"Imposto............:R${i[6]}")
-            print(f"Rentabilidade......:R${i[7]}\n")
+            print(f"Nome do Produto.......: {i[1]}")
+            print(f"Desrição..............: {i[2]}")
+            print(f"Custo.................: R${i[3]} ")
+            print(f"Custo Fixo............: R${i[4]}")
+            print(f"Comissão de Venda.....: R${i[5]}")
+            print(f"Imposto...............: R${i[6]}")
+            print(f"Rentabilidade.........: R${i[7]}")
+            print(f"Quantidade em estoque.: {i[-1]} un")
             print()
     else:
-        print(f"Não foram encontrados nenhum item!")
+        print(f"Não foi encontrados nenhum item!")
     mydb.close()
+    
+    return myresults[0]

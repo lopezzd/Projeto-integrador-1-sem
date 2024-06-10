@@ -11,8 +11,8 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 def atualizar_produto():
-    nome = input("Insira nome do produto: ")
-    procurar_produto_sort(nome)          
+    id = int(input("Insira nome do produto: "))
+    procurar_produto_sort(id)          
     submenu = [\
             '1 - Atualizar nome.',\
             '2 - Atualizar descrição.',\
@@ -20,7 +20,7 @@ def atualizar_produto():
             '4 - Atualizar custo fixo.',\
             '5 - Atualizar comissão de venda.',\
             '6 - Atualizar impostos.',\
-            '7 - Finalizar rentabilidade.'\
+            '7 - Finalizar rentabileade.'\
             ]
     for i in submenu:
         print(i)
@@ -29,45 +29,45 @@ def atualizar_produto():
     while True:
         if escolha == 1:
             alteracao = input("Insira o nome novo:")
-            sql = f"""UPDATE stockprime SET nome = '{alteracao}' WHERE nome_produto = {nome};"""
-            mycursor.execute(sql)
-            mydb.close() 
+            sql = """UPDATE stockprime SET nome = %s WHERE e = %s;"""
+            mycursor.execute(sql, (alteracao, id))
+            mydb.commit() 
             break
         elif escolha == 2: 
-            alteracao = input("Insira a descrição nova:")
-            sql = f"""UPDATE escola.stockprime SET descricao_produto = '{alteracao}' WHERE nome_produto = '{nome}';"""
-            mycursor.execute(sql)
-            mydb.close() 
+            alteracao = input("Insira a descrição nova: ")
+            sql = """UPDATE escola.stockprime SET descricao_produto = %s WHERE id = %s;"""
+            mycursor.execute(sql, (alteracao, id))
+            mydb.commit() 
             break
         elif escolha == 3:
             alteracao = input("Insira o custo novo:")
-            sql = f"""UPDATE stockprime SET cp_valor = '{alteracao}' WHERE nome_produto = {nome};"""
-            mycursor.execute(sql)
-            mydb.close() 
+            sql = """UPDATE stockprime SET cp_valor = %s WHERE id = %s;"""
+            mycursor.execute(sql, (alteracao, id))
+            mydb.commit() 
             break
         elif escolha == 4:
             alteracao = input("Insira o custo fixo novo:")
-            sql = f"""UPDATE stockprime SET cf = '{alteracao}' WHERE nome_produto = {nome};"""
-            mycursor.execute(sql)
-            mydb.close() 
+            sql = """UPDATE stockprime SET cf = %s WHERE id = %s;"""
+            mycursor.execute(sql, (alteracao, id))
+            mydb.commit() 
             break
         elif escolha == 5:
-            alteracao = input("Insira comissão de venda nova:")
-            sql = f"""UPDATE stockprime SET cv = '{alteracao}' WHERE nome_produto = {nome};"""
-            mycursor.execute(sql)
-            mydb.close() 
+            alteracao = input("Insira comissão de venda nova: ")
+            sql = """UPDATE stockprime SET cv = %s WHERE id = %s;"""
+            mycursor.execute(sql, (alteracao, id))
+            mydb.commit() 
             break
         elif escolha == 6:
             alteracao = input("Insira o imposto novo:")
-            sql = f"""UPDATE stockprime SET iv = '{alteracao}' WHERE nome_produto = {nome};"""
-            mycursor.execute(sql)
-            mydb.close() 
+            sql = """UPDATE stockprime SET iv = %s WHERE id = %s;"""
+            mycursor.execute(sql, (alteracao, id))
+            mydb.commit() 
             break
         elif escolha == 7:
-            alteracao = input("Insira a rentabilidade nova:")
-            sql = f"""UPDATE stockprime SET ml = '{alteracao}' WHERE nome_produto = {nome};"""
-            mycursor.execute(sql)
-            mydb.close()  
+            alteracao = input("Insira a rentabilidade nova: ")
+            sql = """UPDATE stockprime SET ml = %s WHERE id = %s;"""
+            mycursor.execute(sql, (alteracao, id))
+            mydb.commit()  
             break
         else:
             print(f'Escolha incorreta!')
