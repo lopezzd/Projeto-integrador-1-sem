@@ -53,19 +53,46 @@ def atualizar_produto():
             break
         elif escolha == 5:
             alteracao = input("Insira comissão de venda nova: ")
-            sql = """UPDATE stockprime SET cv = %s WHERE id = %s;"""
+            sql = """UPDATE stockprime SET cv = %s WHERE id = %s;\
+                            SET lucro = \
+                    CASE \
+                        WHEN lc_porc > 20 THEN 'Lucro alto'\
+                        WHEN lc_porc BETWEEN 10 AND 20 THEN 'Lucro médio'\
+                        WHEN lc_porc > 0 AND lc_porc < 10 THEN 'Lucro baixo'\
+                        WHEN lc_porc = 0 THEN 'Lucro baixo'\
+                        ELSE 'Sem lucro'\
+                    END;\
+            """
             mycursor.execute(sql, (alteracao, id))
             mydb.commit() 
             break
         elif escolha == 6:
             alteracao = input("Insira o imposto novo:")
-            sql = """UPDATE stockprime SET iv = %s WHERE id = %s;"""
+            sql = """UPDATE stockprime SET iv = %s WHERE id = %s;\
+                            SET lucro = \
+                    CASE \
+                        WHEN lc_porc > 20 THEN 'Lucro alto'\
+                        WHEN lc_porc BETWEEN 10 AND 20 THEN 'Lucro médio'\
+                        WHEN lc_porc > 0 AND lc_porc < 10 THEN 'Lucro baixo'\
+                        WHEN lc_porc = 0 THEN 'Lucro baixo'\
+                        ELSE 'Sem lucro'\
+                    END;\
+                """
             mycursor.execute(sql, (alteracao, id))
             mydb.commit() 
             break
         elif escolha == 7:
             alteracao = input("Insira a rentabilidade nova: ")
-            sql = """UPDATE stockprime SET ml = %s WHERE id = %s;"""
+            sql = """UPDATE stockprime SET ml = %s WHERE id = %s;\
+                SET lucro = \
+                    CASE \
+                        WHEN lc_porc > 20 THEN 'Lucro alto'\
+                        WHEN lc_porc BETWEEN 10 AND 20 THEN 'Lucro médio'\
+                        WHEN lc_porc > 0 AND lc_porc < 10 THEN 'Lucro baixo'\
+                        WHEN lc_porc = 0 THEN 'Lucro baixo'\
+                        ELSE 'Sem lucro'\
+                    END;\
+            """
             mycursor.execute(sql, (alteracao, id))
             mydb.commit()  
             break
