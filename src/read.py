@@ -2,16 +2,16 @@ def procurar_produto():
     import mysql.connector
 
     mydb = mysql.connector.connect(
-        host = "127.0.0.1",
-        user = "root",
-        password = "Lop&s546",
-        database = ""
+        host = "BD-ACD",
+        user = "BD080324152",
+        password = "Dnztb9",
+        database = "BD080324152"
     )
 
     mycursor = mydb.cursor()
 
-    nome = input("Insira o nome do produto: ")
-    sql = f"SELECT * FROM escola.stockprime WHERE nome_produto LIKE '%{nome}%'"
+    nome = input("\n\nInsira o nome do produto: ")
+    sql = f"SELECT * FROM stockprime WHERE nome_produto LIKE '%{nome}%'"
     
     mycursor.execute(sql)
     
@@ -44,20 +44,20 @@ def listar_produtos():
     import mysql.connector
 
     mydb = mysql.connector.connect(
-        host = "127.0.0.1",
-        user = "root",
-        password = "Lop&s546",
-        database = ""
+        host = "BD-ACD",
+        user = "BD080324152",
+        password = "Dnztb9",
+        database = "BD080324152"
     )
 
     mycursor = mydb.cursor()
-    sql = f"SELECT * FROM escola.stockprime"
+    sql = f"SELECT * FROM stockprime"
     
     mycursor.execute(sql)
     
     myresults = mycursor.fetchall()
     if(myresults):
-        print(f"Lista de itens cadastrados:\n")
+        print(f"\n\nLista de itens cadastrados:\n")
         for i in myresults:
             print(f"Nome do Produto....:{i[1]}\n")
         print()
@@ -69,15 +69,15 @@ def procurar_produto_sort(n):
     import mysql.connector
 
     mydb = mysql.connector.connect(
-        host = "127.0.0.1",
-        user = "root",
-        password = "Lop&s546",
-        database = ""
+        host = "BD-ACD",
+        user = "BD080324152",
+        password = "Dnztb9",
+        database = "BD080324152"
     )
 
     mycursor = mydb.cursor()
     
-    sql = f"SELECT * FROM escola.stockprime WHERE id = '{n}'"
+    sql = f"SELECT * FROM stockprime WHERE id = '{n}'"
     
     mycursor.execute(sql)
     myresults = mycursor.fetchall()
@@ -96,6 +96,6 @@ def procurar_produto_sort(n):
             print()
     else:
         print(f"Não foi encontrados nenhum item!")
-    mydb.close()
+    mydb.commit()
     
     return myresults[0]

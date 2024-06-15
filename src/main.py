@@ -5,7 +5,7 @@ from delete    import *
 from simulação import *
 
 while True:
-    print("STOCKPRIME")
+    print("\n\nSTOCKPRIME")
     print("_"*50)
     print("Menu")
     print("1 - Cadastrar produto")
@@ -17,7 +17,7 @@ while True:
     print("7 - Encerrar")
     print("_"*50)
     try:
-        Escolha = int(input("Escolha: "))
+        Escolha = int(input("\nEscolha: "))
         if Escolha   == 1:
             cadastrar_produto()
         elif Escolha == 2:
@@ -29,7 +29,7 @@ while True:
         elif Escolha == 5:
             excluir_produto()
         elif Escolha == 6:
-            print("Não implementado")
+            simular()
         elif Escolha == 7:
             print("Obrigado por usar!!!")
             break

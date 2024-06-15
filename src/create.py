@@ -2,17 +2,17 @@ def cadastrar_produto():
     import mysql.connector
 
     mydb = mysql.connector.connect(
-        host = "127.0.0.1",
-        user = "root",
-        password = "Lop&s546",
-        database = ""
+        host = "BD-ACD",
+        user = "BD080324152",
+        password = "Dnztb9",
+        database = "BD080324152"
     )
 
     mycursor = mydb.cursor()
     
     while True:
         try:
-            nome_produto      = input("Informe o nome do produto: ")
+            nome_produto      = input("\nInforme o nome do produto: ")
             cp_valor          = float(input("Informe o custo do produto em reais: "))
             cf                = float(input("Informe o custo administrativo o produto em porcentagem: "))
             cv                = float(input("Informe a comissão de venda do produto em porcentagem: "))
@@ -40,7 +40,7 @@ def cadastrar_produto():
             print("Prejuízo \n")
         
         try:        
-            sql = "INSERT INTO escola.stockprime ( nome_produto, descricao_produto, cp_valor, cf, cv, iv, ml, lucro, quantidade)  VALUES ( %s,%s, %s,%s, %s,%s, %s, %s, %s)"
+            sql = "INSERT INTO stockprime ( nome_produto, descricao_produto, cp_valor, cf, cv, iv, ml, lucro, quantidade)  VALUES ( %s,%s, %s,%s, %s,%s, %s, %s, %s)"
             valores = (nome_produto, descricao_produto, cp_valor, cf, cv, iv, ml, lucro, quantidade)
             mycursor.execute(sql, valores)
             mydb.commit()
